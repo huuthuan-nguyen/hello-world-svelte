@@ -7,8 +7,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "dev": "vite",
-    "start": "vite preview"
+    "dev": "vite --port 8080",
+    "start": "vite preview --port 8080"
   },
   "dependencies": {
     "-": "^0.0.1"
