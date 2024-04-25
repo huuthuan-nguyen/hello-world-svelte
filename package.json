@@ -6,7 +6,7 @@
     "svelte": "^4.2.15"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build --watch",
     "dev": "vite --port 8080",
     "start": "vite preview --port 8080"
   },
