@@ -1,13 +1,13 @@
 <script>
     export let userName;
-    export let userImage;
     export let jobTitle;
     export let description;
+    export let userImage;
 </script>
 
 <div class="contact-card">
     <header>
-        <div class={userImage ? "thumb" : "thumb thumb-placeholder"}>
+        <div class="thumb" class:thumb-placeholder={!userImage}>
             <img src={userImage} alt={userName} />
         </div>
         <div class="user-data">
@@ -16,7 +16,7 @@
         </div>
     </header>
     <div class="description">
-        <p>{@html description}</p>
+        <p>{description}</p>
     </div>
 </div>
 
@@ -26,6 +26,7 @@
         max-width: 30rem;
         border-radius: 5px;
         margin: 1rem 0;
+        background: white;
     }
 
     header {
@@ -41,7 +42,7 @@
     }
 
     .thumb-placeholder {
-        background-color: #ccc;
+        background: #ccc;
     }
 
     img {
@@ -55,6 +56,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding-left: 1rem;
     }
 
     h1 {
