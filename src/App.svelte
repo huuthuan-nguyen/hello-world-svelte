@@ -21,6 +21,7 @@
 		createdContacts = [
 			...createdContacts,
 			{
+				id: Math.random(),
 				name: name,
 				jobTitle: title,
 				imageUrl: image,
@@ -29,9 +30,17 @@
 		];
 		formState = "done";
 	}
+
+	function deleteFirst() {
+		createdContacts = createdContacts.slice(1);
+	}
+
+	function deleteLast() {
+		createdContacts = createdContacts.slice(0, -1);
+	}
 </script>
 
-<div id="form">
+<form id="form">
 	<div class="form-control">
 		<label for="userName">User Name</label>
 		<input type="text" bind:value={name} id="userName" />
@@ -48,9 +57,13 @@
 		<label for="desc">Description</label>
 		<textarea rows="3" bind:value={description} id="desc" />
 	</div>
-</div>
+	<button on:click|preventDefault={addContact} type="submit"
+		>Add Contact Card</button
+	>
+</form>
 
-<button on:click={addContact}>Add Contact Card</button>
+<button on:click={deleteFirst}>Delete First</button>
+<button on:click={deleteLast}>Delete Last</button>
 
 {#if formState === "invalid"}
 	<p>Invalid input.</p>
@@ -58,7 +71,7 @@
 	<p>Please enter some data and hit the button!</p>
 {/if}
 
-{#each createdContacts as contact, index}
+{#each createdContacts as contact, index (contact.id)}
 	<h2># {index + 1}</h2>
 	<ContactCard
 		userName={contact.name}
@@ -74,5 +87,6 @@
 	#form {
 		width: 30rem;
 		max-width: 100%;
+		margin: 1rem 0;
 	}
 </style>
